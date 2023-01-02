@@ -1,23 +1,32 @@
 import logo from './logo.svg';
 import './App.css';
+import Input from './components/Input';
+import React, { useState, useEffect } from "react"
 
 function App() {
+  const [darkMode, setDarkMode]=useState(false);
+
+  
+
+  useEffect(() => {
+    if(darkMode){
+      document.body.classList.add('dark');
+      
+
+    }
+    else{
+      document.body.classList.remove('dark');
+    }
+  }, [darkMode]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={darkMode? "app-dark":"app-light"}>
+      <div className="head-btns">
+        <button type="button" className={darkMode? "btn btn-light pos":"btn btn-dark pos"} data-bs-toggle="button" onClick={() => setDarkMode(!darkMode)} >{darkMode?'Light Mode' : 'Dark Mode'}</button>    
+
+           
+      </div>
+      <Input />
+
     </div>
   );
 }
