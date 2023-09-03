@@ -15,10 +15,11 @@ export default function Main(props) {
             case (temp>=700 && temp<=781) : return prefix+'ms';
             case (temp===800) : return prefix+'cs';
             case (temp>800 && temp<=804): return prefix+'fc';
+            default : return 'no range';
         }
     }
     
-    {/*data.weather? data.weather[0].description==='clear sky' ? "container bg-cs"  : data.weather[0].description==="broken clouds" ? "container bg-cs" : "container" : "container"*/ }
+    
   return (
     <div className={data.weather? setDesc(data.weather[0].id) : null}>
         <div className="top">
